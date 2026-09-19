@@ -179,7 +179,7 @@
             <div class="hero-orb absolute -left-28 top-1/4 h-72 w-72 rounded-full bg-indigo-500/20 blur-3xl"></div>
             <div class="hero-orb absolute -right-28 bottom-10 h-80 w-80 rounded-full bg-fuchsia-500/15 blur-3xl" style="animation-delay:-3s"></div>
 
-            <div class="relative mx-auto flex min-h-screen max-w-7xl items-center px-5 sm:px-8 pt-24">
+            <div class="relative mx-auto grid min-h-screen max-w-7xl items-center gap-12 px-5 pt-24 sm:px-8 lg:grid-cols-[1fr_300px]">
                 <div class="w-full">
                     <div class="reveal max-w-4xl" style="animation-delay:.15s">
                         <p class="mb-6 text-xs font-semibold uppercase tracking-[.35em] text-white/45">
@@ -195,6 +195,18 @@
                          style="animation-delay:.35s">
                         <span>Scroll to explore</span>
                         <span class="scroll-line h-8 w-px bg-white/40"></span>
+                    </div>
+                </div>
+
+                <!-- Empty passport frame -->
+                <div class="reveal mx-auto w-full max-w-[260px] lg:mx-0 lg:justify-self-end"
+                     style="animation-delay:.25s">
+                    <div class="aspect-[3/4] rounded-2xl border-2 border-dashed border-white/30 bg-white/[.035] p-3 shadow-2xl backdrop-blur-sm">
+                        <div class="flex h-full w-full items-center justify-center rounded-xl border border-white/10 bg-white/[.02]">
+                            <span class="px-5 text-center text-[10px] font-semibold uppercase tracking-[.28em] text-white/25">
+                                Passport Photo
+                            </span>
+                        </div>
                     </div>
                 </div>
             </div>
