@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Custom One-Page Layout with Carousel</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Hide scrollbar for Chrome, Safari and Opera */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        /* Hide scrollbar for IE, Edge and Firefox */
+        .no-scrollbar {
+            -ms-overflow-style: none;  /* IE and Edge */
+            scrollbar-width: none;  /* Firefox */
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans pt-16">
+
+    <!-- Navigation -->
+    <header class="fixed top-0 left-0 w-full bg-white/80 backdrop-blur-md border-b border-slate-200 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+            <a href="#" class="text-xl font-bold text-indigo-600 tracking-tight">OnePageCorp</a>
+            <nav class="hidden md:flex space-x-8 text-sm font-medium text-slate-600">
+                <a href="#hero" class="hover:text-indigo-600 transition">Home</a>
+                <a href="#features" class="hover:text-indigo-600 transition">Features</a>
+                <a href="#portfolio" class="hover:text-indigo-600 transition">Portfolio</a>
+                <a href="#contact" class="hover:text-indigo-600 transition">Contact</a>
+            </nav>
+            <a href="#contact" class="hidden md:inline-flex items-center justify-center px-4 py-2 text-sm font-medium text-white bg-indigo-600 rounded-lg hover:bg-indigo-700 transition">Get Started</a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="hero" class="relative overflow-hidden py-24 sm:py-32 bg-gradient-to-b from-indigo-50 to-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+            <h1 class="text-4xl sm:text-6xl font-extrabold text-slate-900 tracking-tight max-w-3xl mx-auto">
+                Build Beautiful Layouts Fast with <span class="text-indigo-600">Tailwind CSS</span>
+            </h1>
+            <p class="mt-6 text-lg text-slate-600 max-w-xl mx-auto">
+                A clean, highly performant component ecosystem structured cleanly within a single optimized webpage skeleton.
+            </p>
+            <div class="mt-10 flex justify-center gap-4">
+                <a href="#portfolio" class="px-6 py-3 text-base font-medium text-white bg-indigo-600 rounded-lg hover:bg-indigo-700 shadow-lg shadow-indigo-200 transition">View Portfolio</a>
+                <a href="#features" class="px-6 py-3 text-base font-medium text-slate-700 bg-slate-100 rounded-lg hover:bg-slate-200 transition">Learn More</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Grid -->
+    <section id="features" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-3xl font-bold text-slate-900 sm:text-4xl">Core Framework Values</h2>
+                <p class="mt-4 text-slate-600">Engineered with utility classes to maximize speed and developer output velocity.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="p-6 rounded-xl border border-slate-100 bg-slate-50/50">
+                    <div class="w-10 h-10 rounded-lg bg-indigo-100 text-indigo-600 flex items-center justify-center font-bold mb-4">01</div>
+                    <h3 class="text-lg font-bold text-slate-900 mb-2">Utility First</h3>
+                    <p class="text-sm text-slate-600">Skip the custom CSS sheets. Build everything by piling functional structural layers together straight in your HTML markup.</p>
+                </div>
+                <div class="p-6 rounded-xl border border-slate-100 bg-slate-50/50">
+                    <div class="w-10 h-10 rounded-lg bg-indigo-100 text-indigo-600 flex items-center justify-center font-bold mb-4">02</div>
+                    <h3 class="text-lg font-bold text-slate-900 mb-2">Responsive Native</h3>
+                    <p class="text-sm text-slate-600">Variants like md: and lg: automatically separate styling structures cleanly across small viewports or ultra widescreen formats.</p>
+                </div>
+                <div class="p-6 rounded-xl border border-slate-100 bg-slate-50/50">
+                    <div class="w-10 h-10 rounded-lg bg-indigo-100 text-indigo-600 flex items-center justify-center font-bold mb-4">03</div>
+                    <h3 class="text-lg font-bold text-slate-900 mb-2">Clean Footprint</h3>
+                    <p class="text-sm text-slate-600">Production compiling strips out unused variables cleanly, leaving tiny CSS bundles that parse in fractions of milliseconds.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Carousel Cards Section -->
+    <section id="portfolio" class="py-20 bg-slate-50 overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-12">
+                <div>
+                    <h2 class="text-3xl font-bold text-slate-900 sm:text-4xl">Featured Projects</h2>
+                    <p class="mt-4 text-slate-600">Swipe or use the controller buttons to navigate through recent dynamic builds.</p>
+                </div>
+                <!-- Controls Buttons -->
+                <div class="flex gap-2 mt-6 md:mt-0">
+                    <button id="prevBtn" class="p-3 rounded-full bg-white border border-slate-200 text-slate-700 hover:bg-slate-100 shadow-sm transition active:scale-95" aria-label="Previous Slide">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
+                    </button>
+                    <button id="nextBtn" class="p-3 rounded-full bg-white border border-slate-200 text-slate-700 hover:bg-slate-100 shadow-sm transition active:scale-95" aria-label="Next Slide">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Carousel Wrapper -->
+            <div class="relative">
+                <div id="carouselContainer" class="flex gap-6 overflow-x-auto snap-x snap-mandatory scroll-smooth no-scrollbar pb-4 -mx-4 px-4 sm:mx-0 sm:px-0">
+                    
+                    <!-- Card 1 -->
+                    <div class="flex-none w-80 sm:w-96 snap-start bg-white rounded-2xl overflow-hidden border border-slate-200/60 shadow-sm hover:shadow-md transition duration-300">
+                        <div class="h-48 bg-gradient-to-br from-purple-500 to-indigo-600 flex items-center justify-center text-white text-xl font-bold">Project Alpha</div>
+                        <div class="p-6">
+                            <span class="text-xs font-semibold uppercase tracking-wider text-indigo-600 bg-indigo-50 px-2.5 py-1 rounded-full">E-Commerce</span>
+                            <h3 class="text-xl font-bold text-slate-900 mt-3 mb-2">Modern Retail Interface</h3>
+                            <p class="text-sm text-slate-600 line-clamp-2">A fully fluid browsing component structure designed for heavy transaction volumes and image optimization grids.</p>
+                            <div class="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between">
+                                <span class="text-xs text-slate-400">Released Jan 2026</span>
+                                <a href="#" class="text-sm font-semibold text-indigo-600 hover:text-indigo-700 inline-flex items-center gap-1">Explore <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg></a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 2 -->
+                    <div class="flex-none w-80 sm:w-96 snap-start bg-white rounded-2xl overflow-hidden border border-slate-200/60 shadow-sm hover:shadow-md transition duration-300">
+                        <div class="h-48 bg-gradient-to-br from-cyan-500 to-blue-600 flex items-center justify-center text-white text-xl font-bold">Project Beta</div>
+                        <div class="p-6">
+                            <span class="text-xs font-semibold uppercase tracking-wider text-cyan-600 bg-cyan-50 px-2.5 py-1 rounded-full">SaaS Dashboard</span>
+                            <h3 class="text-xl font-bold text-slate-900 mt-3 mb-2">Data Processing Suite</h3>
+                            <p class="text-sm text-slate-600 line-clamp-2">Analytical visualization dashboard elements featuring strict layout metrics and dark mode fallback tokens.</p>
+                            <div class="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between">
+                                <span class="text-xs text-slate-400">Released Mar 2026</span>
+                                <a href="#" class="text-sm font-semibold text-cyan-600 hover:text-cyan-700 inline-flex items-center gap-1">Explore <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg></a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 3 -->
+                    <div class="flex-none w-80 sm:w-96 snap-start bg-white rounded-2xl overflow-hidden border border-slate-200/60 shadow-sm hover:shadow-md transition duration-300">
+                        <div class="h-48 bg-gradient-to-br from-emerald-500 to-teal-600 flex items-center justify-center text-white text-xl font-bold">Project Gamma</div>
+                        <div class="p-6">
+                            <span class="text-xs font-semibold uppercase tracking-wider text-emerald-600 bg-emerald-50 px-2.5 py-1 rounded-full">Mobile Web App</span>
+                            <h3 class="text-xl font-bold text-slate-900 mt-3 mb-2">Fintech Payment Wallet</h3>
+                            <p class="text-sm text-slate-600 line-clamp-2">Strict compliance layout optimization blocks built with responsive target areas optimized perfectly for human touchpoints.</p>
+                            <div class="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between">
+                                <span class="text-xs text-slate-400">Released Jun 2026</span>
+                                <a href="#" class="text-sm font-semibold text-emerald-600 hover:text-emerald-700 inline-flex items-center gap-1">Explore <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg></a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 4 -->
+                    <div class="flex-none w-80 sm:w-96 snap-start bg-white rounded-2xl overflow-hidden border border-slate-200/60 shadow-sm hover:shadow-md transition duration-300">
+                        <div class="h-48 bg-gradient-to-br from-pink-500 to-rose-600 flex items-center justify-center text-white text-xl font-bold">Project Delta</div>
+                        <div class="p-6">
+                            <span class="text-xs font-semibold uppercase tracking-wider text-rose-600 bg-rose-50 px-2.5 py-1 rounded-full">Creative Platform</span>
+                            <h3 class="text-xl font-bold text-slate-900 mt-3 mb-2">Web3 Portfolio Showcase</h3>
+                            <p class="text-sm text-slate-600 line-clamp-2">Immersive styling grids configured specifically to isolate high-fidelity art rendering elements securely.</p>
+                            <div class="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between">
+                                <span class="text-xs text-slate-400">Released Aug 2026</span>
+                                <a href="#" class="text-sm font-semibold text-rose-600 hover:text-rose-700 inline-flex items-center gap-1">Explore <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg></a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Form -->
+    <section id="contact" class="py-20 bg-white">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-3xl font-bold text-slate-900 sm:text-4xl">Ready to Start?</h2>
+            <p class="mt-4 text-slate-600 max-w-xl mx-auto">Drop your email below to stay up to date with core package updates and asset deployments.</p>
+            <form class="mt-8 sm:flex max-w-md mx-auto gap-3">
+                <input type="email" required placeholder="Enter your email address" class="w-full px-4 py-3 border border-slate-300 rounded-lg text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 shadow-sm text-sm">
+                <button type="submit" class="mt-3 sm:mt-0 w-full sm:w-auto flex-none px-6 py-3 text-sm font-medium text-white bg-indigo-600 rounded-lg hover:bg-indigo-700 shadow-sm transition">Subscribe</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 text-slate-400 py-8 border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-sm">
+            <p>&copy; 2026 OnePageCorp. All structural design layouts reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Carousel Controller JavaScript Logic -->
+    <script>
+        const container = document.getElementById('carouselContainer');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+
+        if (container && prevBtn && nextBtn) {
+            // Function to get scroll step size dynamically based on a card width
+            const getScrollStep = () => {
+                const firstCard = container.querySelector('.flex-none');
+                return firstCard ? firstCard.offsetWidth + 24 : 340; // card size + flex gap
+            };
+
+            nextBtn.addEventListener('click', () => {
+                container.scrollBy({ left: getScrollStep(), behavior: 'smooth' });
+            });
+
+            prevBtn.addEventListener('click', () => {
+                container.scrollBy({ left: -getScrollStep(), behavior: 'smooth' });
+            });
+        }
+    </script>
+</body>
+</html>
