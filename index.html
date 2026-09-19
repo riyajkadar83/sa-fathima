@@ -97,6 +97,14 @@
             transform: translateY(0) scale(1);
         }
 
+        .coming-soon {
+            min-height: 420px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
         .portfolio-carousel {
             position: relative;
         }
@@ -283,7 +291,7 @@
 
                 <div class="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
 
-                    <button type="button" class="month-card reveal w-full text-left cursor-pointer" onclick="openPortfolio('July')" aria-label="Open July portfolio" style="--gradient:linear-gradient(135deg,#312e81 0%,#6366f1 45%,#c4b5fd 100%);animation-delay:.05s">
+                    <button type="button" class="month-card reveal w-full text-left cursor-pointer" onclick="openPortfolio('July')" aria-label="Open July portfolio video" style="--gradient:linear-gradient(135deg,#312e81 0%,#6366f1 45%,#c4b5fd 100%);animation-delay:.05s">
                         <span class="month-number absolute left-7 top-6 text-8xl font-black tracking-[-.08em] text-white/90">01</span>
                         <span class="absolute right-7 top-7 rounded-full border border-white/25 px-3 py-1 text-[10px] font-bold uppercase tracking-[.25em] text-white/70">2026</span>
                         <div class="shine"></div><div class="month-overlay"></div>
@@ -349,6 +357,30 @@
     </main>
 
 
+    <!-- July Video Modal -->
+    <div id="julyVideoModal" class="portfolio-modal fixed inset-0 z-[110] flex items-center justify-center bg-slate-950/95 p-5 backdrop-blur-md"
+         onclick="closeJulyVideo(event)">
+        <div class="portfolio-modal-panel w-full max-w-5xl rounded-3xl border border-white/10 bg-slate-900 p-5 shadow-2xl sm:p-8"
+             onclick="event.stopPropagation()">
+            <div class="mb-6 flex items-center justify-between">
+                <div>
+                    <p class="text-xs font-semibold uppercase tracking-[.3em] text-white/40">Portfolio · July</p>
+                    <h2 class="mt-1 text-3xl font-black text-white">July</h2>
+                </div>
+                <button type="button" onclick="closeJulyVideo()" class="rounded-full border border-white/10 px-4 py-2 text-sm text-white/70 transition hover:bg-white/10 hover:text-white">
+                    Close
+                </button>
+            </div>
+
+            <div class="overflow-hidden rounded-2xl border border-white/10 bg-black">
+                <video id="julyPortfolioVideo" class="aspect-video h-auto w-full object-contain" controls playsinline preload="metadata">
+                    <source src="july-portfolio.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+        </div>
+    </div>
+
     <!-- Portfolio Gallery Modal -->
     <div id="portfolioModal" class="portfolio-modal fixed inset-0 z-[100] flex items-center justify-center bg-slate-950/90 p-5 backdrop-blur-md"
          onclick="closePortfolio(event)">
@@ -366,8 +398,8 @@
 
             <div class="portfolio-carousel relative overflow-hidden rounded-2xl">
                 <div id="portfolioTrack" class="portfolio-track"></div>
-                <button type="button" class="carousel-arrow left-3" onclick="changePortfolioSlide(-1)" aria-label="Previous image">‹</button>
-                <button type="button" class="carousel-arrow right-3" onclick="changePortfolioSlide(1)" aria-label="Next image">›</button>
+                <button id="prevPortfolioButton" type="button" class="carousel-arrow left-3 hidden" onclick="changePortfolioSlide(-1)" aria-label="Previous image">‹</button>
+                <button id="nextPortfolioButton" type="button" class="carousel-arrow right-3 hidden" onclick="changePortfolioSlide(1)" aria-label="Next image">›</button>
             </div>
             <div id="portfolioDots" class="mt-5 flex justify-center gap-2"></div>
             <p id="portfolioCounter" class="mt-3 text-center text-xs uppercase tracking-[.25em] text-white/30"></p>
@@ -455,13 +487,45 @@
         }
 
         function openPortfolio(month) {
+            if (month === "July") {
+                document.getElementById("julyVideoModal").classList.add("is-open");
+                const julyVideo = document.getElementById("julyPortfolioVideo");
+                if (julyVideo) julyVideo.currentTime = 0;
+                document.body.style.overflow = "hidden";
+                return;
+            }
+
             const modal = document.getElementById("portfolioModal");
             document.getElementById("portfolioTitle").textContent = month;
-            currentPortfolioMonth = month;
-            currentPortfolioIndex = 0;
-            renderPortfolioCarousel();
+
+            // All months except July are currently unavailable.
+            document.getElementById("portfolioTrack").innerHTML = `
+                <div class="portfolio-slide">
+                    <div class="coming-soon rounded-2xl border border-white/10 bg-white/[.03]">
+                        <div>
+                            <div class="mx-auto mb-5 flex h-16 w-16 items-center justify-center rounded-full border border-white/10 bg-white/5">
+                                <span class="text-2xl">✦</span>
+                            </div>
+                            <p class="text-2xl font-black text-white">Coming Soon</p>
+                            <p class="mt-2 text-sm text-white/40">${month} portfolio will be available soon.</p>
+                        </div>
+                    </div>
+                </div>
+            `;
+            document.getElementById("portfolioTrack").style.transform = "translateX(0)";
+            document.getElementById("portfolioDots").innerHTML = "";
+            document.getElementById("portfolioCounter").textContent = "";
+
             modal.classList.add("is-open");
             document.body.style.overflow = "hidden";
+        }
+
+        function closeJulyVideo(event) {
+            if (event && event.target !== event.currentTarget) return;
+            document.getElementById("julyVideoModal").classList.remove("is-open");
+            const julyVideo = document.getElementById("julyPortfolioVideo");
+            if (julyVideo) julyVideo.pause();
+            document.body.style.overflow = "";
         }
 
         function changePortfolioSlide(direction) {
@@ -483,7 +547,10 @@
         }
 
         document.addEventListener("keydown", (event) => {
-            if (event.key === "Escape") closePortfolio();
+            if (event.key === "Escape") {
+                closePortfolio();
+                closeJulyVideo();
+            }
         });
     </script>
 </body>
