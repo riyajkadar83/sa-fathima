@@ -200,6 +200,102 @@
             0%,100% { transform: scaleY(.65); opacity: .35; }
             50% { transform: scaleY(1); opacity: 1; }
         }
+        /* Mobile hero redesign */
+        @media (max-width: 767px) {
+            #about {
+                min-height: 100svh;
+            }
+
+            #about > .hero-orb {
+                opacity: .65;
+            }
+
+            #about > .relative.mx-auto {
+                display: flex;
+                min-height: 100svh;
+                flex-direction: column;
+                justify-content: flex-start;
+                gap: 0;
+                padding: 112px 20px 42px;
+            }
+
+            #about > .relative.mx-auto > .w-full {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                width: 100%;
+            }
+
+            #about .reveal.max-w-4xl {
+                width: 100%;
+                max-width: 100%;
+                text-align: center;
+            }
+
+            #about .reveal.max-w-4xl p {
+                margin-bottom: 14px;
+                font-size: 9px;
+                letter-spacing: .28em;
+            }
+
+            #about h1 {
+                max-width: 100%;
+                margin: 0 auto;
+                font-size: clamp(3.35rem, 15vw, 5rem);
+                line-height: .86;
+                letter-spacing: -.07em;
+                text-wrap: balance;
+            }
+
+            #about .reveal.mt-16 {
+                margin-top: 28px;
+                justify-content: center;
+                gap: 12px;
+            }
+
+            #about .scroll-line {
+                height: 24px;
+            }
+
+            #about .reveal.mx-auto.w-full.max-w-\[260px\] {
+                width: min(190px, 58vw);
+                max-width: 190px;
+                margin: 42px auto 0;
+            }
+
+            #about .reveal.mx-auto.w-full.max-w-\[260px\] > div {
+                padding: 8px;
+                border-radius: 18px;
+            }
+
+            #about .reveal.mx-auto.w-full.max-w-\[260px\] > div > div {
+                border-radius: 12px;
+                overflow: hidden;
+            }
+
+            #about .reveal.mx-auto.w-full.max-w-\[260px\] img {
+                display: block;
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+        }
+
+        @media (max-width: 380px) {
+            #about > .relative.mx-auto {
+                padding-top: 104px;
+            }
+
+            #about h1 {
+                font-size: 3.15rem;
+            }
+
+            #about .reveal.mx-auto.w-full.max-w-\[260px\] {
+                margin-top: 34px;
+                width: 175px;
+            }
+        }
+
 
         @media (prefers-reduced-motion: reduce) {
             *, *::before, *::after {
