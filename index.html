@@ -75,6 +75,62 @@
             box-shadow: 0 28px 60px rgba(15,23,42,.18);
         }
 
+        .portfolio-modal {
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+            transition: opacity .3s ease, visibility .3s ease;
+        }
+
+        .portfolio-modal.is-open {
+            opacity: 1;
+            visibility: visible;
+            pointer-events: auto;
+        }
+
+        .portfolio-modal-panel {
+            transform: translateY(18px) scale(.98);
+            transition: transform .35s cubic-bezier(.22,1,.36,1);
+        }
+
+        .portfolio-modal.is-open .portfolio-modal-panel {
+            transform: translateY(0) scale(1);
+        }
+
+        .portfolio-carousel {
+            position: relative;
+        }
+
+        .portfolio-track {
+            display: flex;
+            transition: transform .45s cubic-bezier(.22,1,.36,1);
+        }
+
+        .portfolio-slide {
+            flex: 0 0 100%;
+            min-width: 100%;
+        }
+
+        .carousel-arrow {
+            position: absolute;
+            top: 50%;
+            z-index: 5;
+            transform: translateY(-50%);
+            width: 42px;
+            height: 42px;
+            border-radius: 9999px;
+            border: 1px solid rgba(255,255,255,.18);
+            background: rgba(15,23,42,.72);
+            color: white;
+            backdrop-filter: blur(10px);
+            transition: .2s ease;
+        }
+
+        .carousel-arrow:hover {
+            background: rgba(255,255,255,.16);
+            transform: translateY(-50%) scale(1.05);
+        }
+
         .month-number {
             transition: transform .7s cubic-bezier(.22,1,.36,1), opacity .5s ease;
         }
@@ -227,7 +283,7 @@
 
                 <div class="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
 
-                    <article class="month-card reveal" style="--gradient:linear-gradient(135deg,#312e81 0%,#6366f1 45%,#c4b5fd 100%);animation-delay:.05s">
+                    <button type="button" class="month-card reveal w-full text-left cursor-pointer" onclick="openPortfolio('July')" aria-label="Open July portfolio" style="--gradient:linear-gradient(135deg,#312e81 0%,#6366f1 45%,#c4b5fd 100%);animation-delay:.05s">
                         <span class="month-number absolute left-7 top-6 text-8xl font-black tracking-[-.08em] text-white/90">01</span>
                         <span class="absolute right-7 top-7 rounded-full border border-white/25 px-3 py-1 text-[10px] font-bold uppercase tracking-[.25em] text-white/70">2026</span>
                         <div class="shine"></div><div class="month-overlay"></div>
@@ -235,9 +291,9 @@
                             <p class="text-xs font-semibold uppercase tracking-[.3em] text-indigo-200">Chapter 01</p>
                             <h3 class="mt-2 text-4xl font-black tracking-tight text-white">July</h3>
                         </div>
-                    </article>
+                    </button>
 
-                    <article class="month-card reveal" style="--gradient:linear-gradient(135deg,#831843 0%,#db2777 48%,#fdba74 100%);animation-delay:.12s">
+                    <button type="button" class="month-card reveal w-full text-left cursor-pointer" onclick="openPortfolio('August')" aria-label="Open August portfolio" style="--gradient:linear-gradient(135deg,#831843 0%,#db2777 48%,#fdba74 100%);animation-delay:.12s">
                         <span class="month-number absolute left-7 top-6 text-8xl font-black tracking-[-.08em] text-white/90">02</span>
                         <span class="absolute right-7 top-7 rounded-full border border-white/25 px-3 py-1 text-[10px] font-bold uppercase tracking-[.25em] text-white/70">2026</span>
                         <div class="shine"></div><div class="month-overlay"></div>
@@ -245,9 +301,9 @@
                             <p class="text-xs font-semibold uppercase tracking-[.3em] text-pink-200">Chapter 02</p>
                             <h3 class="mt-2 text-4xl font-black tracking-tight text-white">August</h3>
                         </div>
-                    </article>
+                    </button>
 
-                    <article class="month-card reveal" style="--gradient:linear-gradient(135deg,#064e3b 0%,#0f766e 48%,#67e8f9 100%);animation-delay:.19s">
+                    <button type="button" class="month-card reveal w-full text-left cursor-pointer" onclick="openPortfolio('September')" aria-label="Open September portfolio" style="--gradient:linear-gradient(135deg,#064e3b 0%,#0f766e 48%,#67e8f9 100%);animation-delay:.19s">
                         <span class="month-number absolute left-7 top-6 text-8xl font-black tracking-[-.08em] text-white/90">03</span>
                         <span class="absolute right-7 top-7 rounded-full border border-white/25 px-3 py-1 text-[10px] font-bold uppercase tracking-[.25em] text-white/70">2026</span>
                         <div class="shine"></div><div class="month-overlay"></div>
@@ -255,9 +311,9 @@
                             <p class="text-xs font-semibold uppercase tracking-[.3em] text-teal-200">Chapter 03</p>
                             <h3 class="mt-2 text-4xl font-black tracking-tight text-white">September</h3>
                         </div>
-                    </article>
+                    </button>
 
-                    <article class="month-card reveal" style="--gradient:linear-gradient(135deg,#7c2d12 0%,#ea580c 45%,#facc15 100%);animation-delay:.26s">
+                    <button type="button" class="month-card reveal w-full text-left cursor-pointer" onclick="openPortfolio('October')" aria-label="Open October portfolio" style="--gradient:linear-gradient(135deg,#7c2d12 0%,#ea580c 45%,#facc15 100%);animation-delay:.26s">
                         <span class="month-number absolute left-7 top-6 text-8xl font-black tracking-[-.08em] text-white/90">04</span>
                         <span class="absolute right-7 top-7 rounded-full border border-white/25 px-3 py-1 text-[10px] font-bold uppercase tracking-[.25em] text-white/70">2026</span>
                         <div class="shine"></div><div class="month-overlay"></div>
@@ -265,9 +321,9 @@
                             <p class="text-xs font-semibold uppercase tracking-[.3em] text-orange-200">Chapter 04</p>
                             <h3 class="mt-2 text-4xl font-black tracking-tight text-white">October</h3>
                         </div>
-                    </article>
+                    </button>
 
-                    <article class="month-card reveal" style="--gradient:linear-gradient(135deg,#312e81 0%,#7c3aed 45%,#e879f9 100%);animation-delay:.33s">
+                    <button type="button" class="month-card reveal w-full text-left cursor-pointer" onclick="openPortfolio('November')" aria-label="Open November portfolio" style="--gradient:linear-gradient(135deg,#312e81 0%,#7c3aed 45%,#e879f9 100%);animation-delay:.33s">
                         <span class="month-number absolute left-7 top-6 text-8xl font-black tracking-[-.08em] text-white/90">05</span>
                         <span class="absolute right-7 top-7 rounded-full border border-white/25 px-3 py-1 text-[10px] font-bold uppercase tracking-[.25em] text-white/70">2026</span>
                         <div class="shine"></div><div class="month-overlay"></div>
@@ -275,9 +331,9 @@
                             <p class="text-xs font-semibold uppercase tracking-[.3em] text-violet-200">Chapter 05</p>
                             <h3 class="mt-2 text-4xl font-black tracking-tight text-white">November</h3>
                         </div>
-                    </article>
+                    </button>
 
-                    <article class="month-card reveal" style="--gradient:linear-gradient(135deg,#064e3b 0%,#059669 45%,#38bdf8 100%);animation-delay:.40s">
+                    <button type="button" class="month-card reveal w-full text-left cursor-pointer" onclick="openPortfolio('December')" aria-label="Open December portfolio" style="--gradient:linear-gradient(135deg,#064e3b 0%,#059669 45%,#38bdf8 100%);animation-delay:.40s">
                         <span class="month-number absolute left-7 top-6 text-8xl font-black tracking-[-.08em] text-white/90">06</span>
                         <span class="absolute right-7 top-7 rounded-full border border-white/25 px-3 py-1 text-[10px] font-bold uppercase tracking-[.25em] text-white/70">2026</span>
                         <div class="shine"></div><div class="month-overlay"></div>
@@ -285,15 +341,150 @@
                             <p class="text-xs font-semibold uppercase tracking-[.3em] text-emerald-200">Chapter 06</p>
                             <h3 class="mt-2 text-4xl font-black tracking-tight text-white">December</h3>
                         </div>
-                    </article>
+                    </button>
 
                 </div>
             </div>
         </section>
     </main>
 
+
+    <!-- Portfolio Gallery Modal -->
+    <div id="portfolioModal" class="portfolio-modal fixed inset-0 z-[100] flex items-center justify-center bg-slate-950/90 p-5 backdrop-blur-md"
+         onclick="closePortfolio(event)">
+        <div class="portfolio-modal-panel w-full max-w-5xl rounded-3xl border border-white/10 bg-slate-900 p-5 shadow-2xl sm:p-8"
+             onclick="event.stopPropagation()">
+            <div class="mb-6 flex items-center justify-between">
+                <div>
+                    <p class="text-xs font-semibold uppercase tracking-[.3em] text-white/40">Portfolio</p>
+                    <h2 id="portfolioTitle" class="mt-1 text-3xl font-black text-white">July</h2>
+                </div>
+                <button type="button" onclick="closePortfolio()" class="rounded-full border border-white/10 px-4 py-2 text-sm text-white/70 transition hover:bg-white/10 hover:text-white" aria-label="Close portfolio">
+                    Close
+                </button>
+            </div>
+
+            <div class="portfolio-carousel relative overflow-hidden rounded-2xl">
+                <div id="portfolioTrack" class="portfolio-track"></div>
+                <button type="button" class="carousel-arrow left-3" onclick="changePortfolioSlide(-1)" aria-label="Previous image">‹</button>
+                <button type="button" class="carousel-arrow right-3" onclick="changePortfolioSlide(1)" aria-label="Next image">›</button>
+            </div>
+            <div id="portfolioDots" class="mt-5 flex justify-center gap-2"></div>
+            <p id="portfolioCounter" class="mt-3 text-center text-xs uppercase tracking-[.25em] text-white/30"></p>
+        </div>
+    </div>
+
     <footer class="border-t border-white/10 bg-slate-950 py-8 text-center">
         <span class="text-sm font-medium text-white/45">&copy; 2026 Studio Design.</span>
     </footer>
+
+    <script>
+        const portfolioData = {
+            July: [
+                "https://images.unsplash.com/photo-1513364776144-60967b0f800f?auto=format&fit=crop&w=1200&q=85",
+                "https://images.unsplash.com/photo-1547891654-e66ed7ebb968?auto=format&fit=crop&w=1200&q=85",
+                "https://images.unsplash.com/photo-1577083552431-6e5fd01aa342?auto=format&fit=crop&w=1200&q=85",
+                "https://images.unsplash.com/photo-1549490349-8643362247b5?auto=format&fit=crop&w=1200&q=85",
+                "https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?auto=format&fit=crop&w=1200&q=85"
+            ],
+            August: [
+                "https://images.unsplash.com/photo-1577083288073-40892c0860a4?auto=format&fit=crop&w=1200&q=85",
+                "https://images.unsplash.com/photo-1541961017774-22349e4a1262?auto=format&fit=crop&w=1200&q=85",
+                "https://images.unsplash.com/photo-1561214115-f2f134cc4912?auto=format&fit=crop&w=1200&q=85",
+                "https://images.unsplash.com/photo-1549490349-8643362247b5?auto=format&fit=crop&w=1200&q=85",
+                "https://images.unsplash.com/photo-1577083552431-6e5fd01aa342?auto=format&fit=crop&w=1200&q=85"
+            ],
+            September: [
+                "https://images.unsplash.com/photo-1579783900882-c0d3dad7b119?auto=format&fit=crop&w=1200&q=85",
+                "https://images.unsplash.com/photo-1577083288073-40892c0860a4?auto=format&fit=crop&w=1200&q=85",
+                "https://images.unsplash.com/photo-1561839561-b13bcfe95249?auto=format&fit=crop&w=1200&q=85",
+                "https://images.unsplash.com/photo-1561214115-f2f134cc4912?auto=format&fit=crop&w=1200&q=85",
+                "https://images.unsplash.com/photo-1541961017774-22349e4a1262?auto=format&fit=crop&w=1200&q=85"
+            ],
+            October: [
+                "https://images.unsplash.com/photo-1549490349-8643362247b5?auto=format&fit=crop&w=1200&q=85",
+                "https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?auto=format&fit=crop&w=1200&q=85",
+                "https://images.unsplash.com/photo-1513364776144-60967b0f800f?auto=format&fit=crop&w=1200&q=85",
+                "https://images.unsplash.com/photo-1577083552431-6e5fd01aa342?auto=format&fit=crop&w=1200&q=85",
+                "https://images.unsplash.com/photo-1579783900882-c0d3dad7b119?auto=format&fit=crop&w=1200&q=85"
+            ],
+            November: [
+                "https://images.unsplash.com/photo-1561839561-b13bcfe95249?auto=format&fit=crop&w=1200&q=85",
+                "https://images.unsplash.com/photo-1561214115-f2f134cc4912?auto=format&fit=crop&w=1200&q=85",
+                "https://images.unsplash.com/photo-1541961017774-22349e4a1262?auto=format&fit=crop&w=1200&q=85",
+                "https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?auto=format&fit=crop&w=1200&q=85",
+                "https://images.unsplash.com/photo-1577083288073-40892c0860a4?auto=format&fit=crop&w=1200&q=85"
+            ],
+            December: [
+                "https://images.unsplash.com/photo-1541961017774-22349e4a1262?auto=format&fit=crop&w=1200&q=85",
+                "https://images.unsplash.com/photo-1513364776144-60967b0f800f?auto=format&fit=crop&w=1200&q=85",
+                "https://images.unsplash.com/photo-1579783900882-c0d3dad7b119?auto=format&fit=crop&w=1200&q=85",
+                "https://images.unsplash.com/photo-1561839561-b13bcfe95249?auto=format&fit=crop&w=1200&q=85",
+                "https://images.unsplash.com/photo-1549490349-8643362247b5?auto=format&fit=crop&w=1200&q=85"
+            ]
+        };
+
+        let currentPortfolioMonth = "";
+        let currentPortfolioIndex = 0;
+
+        function renderPortfolioCarousel() {
+            const images = portfolioData[currentPortfolioMonth] || [];
+            const track = document.getElementById("portfolioTrack");
+            const dots = document.getElementById("portfolioDots");
+            const counter = document.getElementById("portfolioCounter");
+
+            track.style.transform = `translateX(-${currentPortfolioIndex * 100}%)`;
+            track.innerHTML = images.map((src, index) => `
+                <div class="portfolio-slide">
+                    <div class="aspect-[16/10] overflow-hidden rounded-2xl bg-white/5">
+                        <img src="${src}" alt="${currentPortfolioMonth} portfolio image ${index + 1}"
+                             class="h-full w-full object-cover"
+                             onerror="this.style.display='none'; this.parentElement.innerHTML='<div class="flex h-full items-center justify-center text-xs uppercase tracking-[.2em] text-white/25">Image unavailable</div>';">
+                    </div>
+                </div>
+            `).join("");
+
+            dots.innerHTML = images.map((_, index) => `
+                <button type="button"
+                        onclick="goToPortfolioSlide(${index})"
+                        class="h-2 rounded-full transition-all ${index === currentPortfolioIndex ? "w-7 bg-white" : "w-2 bg-white/25"}"
+                        aria-label="Go to image ${index + 1}"></button>
+            `).join("");
+
+            counter.textContent = `${currentPortfolioIndex + 1} / ${images.length}`;
+        }
+
+        function openPortfolio(month) {
+            const modal = document.getElementById("portfolioModal");
+            document.getElementById("portfolioTitle").textContent = month;
+            currentPortfolioMonth = month;
+            currentPortfolioIndex = 0;
+            renderPortfolioCarousel();
+            modal.classList.add("is-open");
+            document.body.style.overflow = "hidden";
+        }
+
+        function changePortfolioSlide(direction) {
+            const images = portfolioData[currentPortfolioMonth] || [];
+            if (!images.length) return;
+            currentPortfolioIndex = (currentPortfolioIndex + direction + images.length) % images.length;
+            renderPortfolioCarousel();
+        }
+
+        function goToPortfolioSlide(index) {
+            currentPortfolioIndex = index;
+            renderPortfolioCarousel();
+        }
+
+        function closePortfolio(event) {
+            if (event && event.target !== event.currentTarget) return;
+            document.getElementById("portfolioModal").classList.remove("is-open");
+            document.body.style.overflow = "";
+        }
+
+        document.addEventListener("keydown", (event) => {
+            if (event.key === "Escape") closePortfolio();
+        });
+    </script>
 </body>
 </html>
